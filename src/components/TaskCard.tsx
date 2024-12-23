@@ -47,7 +47,7 @@ export default function TaskCard(props: TaskCardProps) {
       </button>
       <a
         href={`/edit/${task.id}`}
-        className="m-2 md:m-8 flex-1 text-lightGray text-2xl"
+        className={`m-2 md:m-8 flex-1 text-lightGray text-2xl ${(task.status == 'COMPLETED') ? "line-through" : ""}`}
       >
         {task.title}
       </a>
