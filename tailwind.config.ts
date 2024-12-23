@@ -9,14 +9,14 @@ export default {
   theme: {
     extend: {
       colors: {
-        darkBlack: '#0D0D0D',
-        lightBlack: '#1A1A1A',
-        lightBlue: '#1E6F9F',
-        purple: '#5E60CE',
-        darkGray: '#333333',
+        darkBlack: "#0D0D0D",
+        lightBlack: "#1A1A1A",
+        lightBlue: "#1E6F9F",
+        purple: "#5E60CE",
+        darkGray: "#333333",
         darkerGray: "#262626",
-        lightGray: '#808080',
-        white: '#D9D9D9',
+        lightGray: "#808080",
+        white: "#D9D9D9",
       },
     },
   },

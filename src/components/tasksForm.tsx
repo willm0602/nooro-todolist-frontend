@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import Task from "@/task";
 /**
@@ -8,48 +8,51 @@ import Task from "@/task";
 
 import { FormEvent, FormEventHandler } from "react";
 
-const API_URL = 'http://localhost:8080/tasks';
+const API_URL = "http://localhost:8080/tasks";
 
 type TasksFormProps = {
-    children: React.ReactElement | React.ReactElement[]
-    method: 'POST' | 'GET' | 'PUT' | 'DELETE'
-    className?: string
-}
+  children: React.ReactElement | React.ReactElement[];
+  method: "POST" | "GET" | "PUT" | "DELETE";
+  className?: string;
+};
 
+export default function TasksForm(props: TasksFormProps) {
+  const { children, method, className } = props;
 
-export default function TasksForm(props: TasksFormProps){
+  const submitTasksForm: FormEventHandler = (e) => {
+    e.preventDefault();
+    console.log("SUBMITTING");
+    const form = e.currentTarget as HTMLFormElement;
+    const formData = new FormData(form);
 
-    const {children, method, className} = props;
+    const formDataObject: Record<string, any> = {};
+    formData.forEach((value, key) => {
+      formDataObject[key] = value;
+    });
 
-    const submitTasksForm: FormEventHandler = (e) => {
-        e.preventDefault();
-        console.log('SUBMITTING')
-        const form = e.currentTarget as HTMLFormElement;
-        const formData = new FormData(form);
+    const body = JSON.stringify(formDataObject);
 
-        const formDataObject: Record<string, any> = {};
-        formData.forEach((value, key) => {
-            formDataObject[key] = value;
-        });
+    fetch(API_URL, {
+      method,
+      body: body,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => {
+        window.location.href = "/";
+      })
+      .catch(console.error);
+  };
 
-        const body = JSON.stringify(formDataObject);
-    
-        fetch(API_URL, {
-            method,
-            body: body,
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        }).then((res) => {
-            window.location.href = '/'
-        }).catch(console.error)
-    }
-
-    return <form action={API_URL}
-                method={method}
-                className={className}
-                onSubmit={submitTasksForm}
-            >
-        {children}
+  return (
+    <form
+      action={API_URL}
+      method={method}
+      className={className}
+      onSubmit={submitTasksForm}
+    >
+      {children}
     </form>
+  );
 }
