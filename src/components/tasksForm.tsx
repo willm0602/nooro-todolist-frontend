@@ -23,6 +23,7 @@ export default function TasksForm(props: TasksFormProps){
 
     const submitTasksForm: FormEventHandler = (e) => {
         e.preventDefault();
+        console.log('SUBMITTING')
         const form = e.currentTarget as HTMLFormElement;
         const formData = new FormData(form);
 
@@ -40,7 +41,6 @@ export default function TasksForm(props: TasksFormProps){
                 'Content-Type': 'application/json',
             },
         }).then((res) => {
-            console.log('Success')
             window.location.href = '/'
         }).catch(console.error)
     }

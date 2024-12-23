@@ -14,7 +14,7 @@ export default function SelectColor(props: { initColor?: string }) {
     const { initColor } = props;
 
     return (
-        <div className="flex">
+        <div className="flex flex-wrap">
             {COLORS.map((color, idx) => (
                 <label
                     key={`select-color-${color}`}
@@ -26,6 +26,7 @@ export default function SelectColor(props: { initColor?: string }) {
                         id={`color-${idx}`}
                         value={color}
                         className="hidden peer"
+                        defaultChecked={color == initColor}
                     />
                     <span
                         style={{

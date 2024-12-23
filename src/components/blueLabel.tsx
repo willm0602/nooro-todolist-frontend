@@ -1,7 +1,7 @@
 
 type BlueLabelProps = {
     text: string,
-    htmlFor: string
+    htmlFor?: string
 }
 
 export default function BlueLabel(props: BlueLabelProps){

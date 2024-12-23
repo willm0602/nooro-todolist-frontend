@@ -25,7 +25,7 @@ export default function RootLayout({
       >
         <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
           <Header/>
-          <div className="w-8/12 mx-auto">
+          <div className="w-11/12 md:w-8/12 mx-auto">
             {children}
           </div>
         </main>
